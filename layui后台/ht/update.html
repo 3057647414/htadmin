@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+<link rel="stylesheet" href="../layui/css/layui.css" tppabs="http://res.layui.com/layui/dist/css/layui.css"  media="all">
+<script src="../layui/layui.js" charset="utf-8"></script>
+	</head>
+	<body>
+<form class="layui-form" action="" style="padding: 20px;" lay-filter="editDialogForm">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-inline">
+                <input type="radio" name="sex" value="男" title="男">
+                <input type="radio" name="sex" value="女" title="女" checked>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择城市</label>
+            <div class="layui-input-inline">
+                <select name="city">
+                    <option value="城市-0">城市-0</option>
+                    <option value="城市-1">城市-1</option>
+                    <option value="城市-2">城市-2</option>
+                    <option value="城市-3">城市-3</option>
+                    <option value="城市-4">城市-4</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">请填写签名</label>
+            <div class="layui-input-block">
+                <textarea name="sign" placeholder="请填写签名" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">积分</label>
+            <div class="layui-input-inline">
+                <input type="number" name="experience" placeholder="请输入积分" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">评分</label>
+            <div class="layui-input-inline">
+                <input type="number" name="score" placeholder="请输入评分" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择职业</label>
+            <div class="layui-input-inline">
+                <select name="classify">
+                    <option value="作家">作家</option>
+                    <option value="词人">词人</option>
+                    <option value="酱油">酱油</option>
+                    <option value="诗人">诗人</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">财富</label>
+            <div class="layui-input-inline">
+                <input type="number" name="wealth" placeholder="请输入财富" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+    </form>
+	</body>
+</html>

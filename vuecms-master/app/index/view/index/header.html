@@ -1,0 +1,58 @@
+<div id="head">
+
+<!--top start -->
+<div class="top">
+<div class="TopInfo"><div class="link"></div>
+</div>
+<div class="clearfix"></div>
+<div class="TopLogo">
+<div class="logo" style="font-size:34px; line-height:34px;"><a href="/">网站logo</div>
+<!--<div class="tel">
+<div class="SearchBar">
+<form method="get" action="/Search/index.asp">
+				<input type="text" name="q" id="search-text" size="15" onBlur="if(this.value=='') this.value='请输入关键词';" 
+onfocus="if(this.value=='请输入关键词') this.value='';" value="请输入关键词" /><input type="submit" id="search-submit" value="搜索" />
+			</form>
+</div>
+</div>-->
+<div class="tel">
+<div class="SearchBar">
+<form method="get" action="#">
+				<input type="text" name="q" id="search-text" size="15" onBlur="if(this.value=='') this.value='请输入关键词';" 
+onfocus="if(this.value=='请输入关键词') this.value='';" value="请输入关键词" /><input type="submit" id="search-submit" value="搜索" />
+			</form>
+</div>
+</div>
+</div>
+
+</div>
+<!--top end-->
+
+
+<!--nav start-->
+<div id="NavLink">
+<div class="NavBG">
+<!--Head Menu Start-->
+<ul id='sddm'>
+<li class='CurrentLi'><a href='/'>首  页</a></li> 
+<li><a href='{:U(7)}' onmouseover=mopen('m2') onmouseout='mclosetime()'>公司简介</a></li> 
+<li><a href='{:U(8)}' onmouseover=mopen('m3') onmouseout='mclosetime()'>产品中心</a>
+ <div id='m3' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>
+ {class sqlstr="pid=8" cache="60"}
+ <a href='{$class.url}'>{$class.class_name}</a>
+ {/class}
+ </div>
+</li> 
+<li><a href='{:U(9)}' onmouseover=mopen('m4') onmouseout='mclosetime()'>行业新闻</a></li> 
+<li><a href='{:U(10)}'>人才招聘</a></li>  
+<li><a href='{:U(12)}'>联系我们</a></li>
+<li><a href='{:U(22)}' onmouseover=mopen('m6') onmouseout='mclosetime()'>内容模型</a></li>
+<li><a href='/admin' target="_blank" onmouseover=mopen('m6') onmouseout='mclosetime()'>后台管理</a></li>
+</ul>
+<!--Head Menu End-->
+</div>
+<div class="clearfix"></div>
+</div>
+<!--nav end-->
+
+</div>

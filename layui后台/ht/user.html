@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../layui/css/layui.css" tppabs="http://res.layui.com/layui/dist/css/layui.css"  media="all">
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+ 
+<table class="layui-hide" id="test" lay-filter="test"></table>
+ 
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+    <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+  </div>
+</script>
+ 
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+              
+          <script type="text/html" id="editDialog">
+              <form class="layui-form" action="" style="padding: 20px;" lay-filter="editDialogForm">
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">用户名</label>
+                      <div class="layui-input-inline">
+                          <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">单选框</label>
+                      <div class="layui-input-inline">
+                          <input type="radio" name="sex" value="男" title="男">
+                          <input type="radio" name="sex" value="女" title="女" checked>
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">选择城市</label>
+                      <div class="layui-input-inline">
+                          <select name="city">
+                              <option value="城市-0">城市-0</option>
+                              <option value="城市-1">城市-1</option>
+                              <option value="城市-2">城市-2</option>
+                              <option value="城市-3">城市-3</option>
+                              <option value="城市-4">城市-4</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="layui-form-item layui-form-text">
+                      <label class="layui-form-label">请填写签名</label>
+                      <div class="layui-input-block">
+                          <textarea name="sign" placeholder="请填写签名" class="layui-textarea"></textarea>
+                      </div>
+                  </div>
+          
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">积分</label>
+                      <div class="layui-input-inline">
+                          <input type="number" name="experience" placeholder="请输入积分" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+          
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">评分</label>
+                      <div class="layui-input-inline">
+                          <input type="number" name="score" placeholder="请输入评分" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+          
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">选择职业</label>
+                      <div class="layui-input-inline">
+                          <select name="classify">
+                              <option value="作家">作家</option>
+                              <option value="词人">词人</option>
+                              <option value="酱油">酱油</option>
+                              <option value="诗人">诗人</option>
+                          </select>
+                      </div>
+                  </div>
+          
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">财富</label>
+                      <div class="layui-input-inline">
+                          <input type="number" name="wealth" placeholder="请输入财富" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+          
+              </form>
+          </script>
+<script src="../layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 --> 
+ 
+<script>
+layui.use(['table','layer','form'], function(){
+  var table = layui.table
+  var $=layui.$;
+  var form=layui.form
+  
+  table.render({
+    elem: '#test'
+    ,url:'http://localhost:8080/user/fandall'/*tpa=https://www.layuiweb.com/test/table/demo1.json*/
+    ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+    ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+      title: '提示'
+      ,layEvent: 'LAYTABLE_TIPS'
+      ,icon: 'layui-icon-tips'
+    }]
+    ,title: '用户数据表'
+    ,cols: [[
+      {type: 'checkbox', fixed: 'left'}
+      ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true}
+      ,{field:'name', title:'用户名', width:120, edit: 'text'}
+      ,{field:'pwd', title:'密码', width:150, edit: 'text',}
+      ,{field:'uid', title:'UID', width:80, edit: 'text', sort: true}
+      ,{field:'gander', title:'等级', width:100}
+      ,{field:'sign', title:'购物车'}
+      ,{field:'experience', title:'订单', width:80, sort: true}
+      ,{field:'ip', title:'收货地址', width:120}
+      ,{field:'logins', title:'余额', width:100, sort: true}
+      ,{field:'joinTime', title:'积分', width:120}
+	  ,{field:'joinTime', title:'手机号', width:120}
+	  ,{field:'joinTime', title:'工作', width:120}
+	  ,{field:'joinTime', title:'头像', width:120}
+	  ,{field:'joinTime', title:'行业等级', width:120}
+	  ,{field:'joinTime', title:'关注店铺', width:120}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+    ]]
+    ,page: true
+  });
+  
+  //头工具栏事件
+  table.on('toolbar(test)', function(obj){
+    var checkStatus = table.checkStatus(obj.config.id);
+    switch(obj.event){
+      case 'getCheckData':
+        var data = checkStatus.data;
+        layer.alert(JSON.stringify(data));
+      break;
+      case 'getCheckLength':
+        var data = checkStatus.data;
+        layer.msg('选中了：'+ data.length + ' 个');
+      break;
+      case 'isAll':
+        layer.msg(checkStatus.isAll ? '全选': '未全选');
+      break;
+      
+      //自定义头工具栏右侧图标 - 提示
+      case 'LAYTABLE_TIPS':
+        layer.alert('这是工具栏右侧自定义的一个图标按钮');
+      break;
+    };
+  });
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+        obj.del();
+        layer.close(index);
+      });
+    } else if(obj.event === 'edit'){
+		
+		layer.open({
+		    type: 1,
+		    title: '编辑',
+		    area:['50%','70%'],
+		    content: $('#editDialog').html(), //这里content是一个普通的String
+		    btn: ['确定', '取消'],
+		    success: function (index, layero) {
+		        form.render();
+		        form.val("#editDialogForm",data);
+		    },
+		    yes: function (index, layero) {
+				layer.close(index)
+		    },
+		    btn2: function (index, layero) {
+		        // return false //开启该代码可禁止点击该按钮关闭
+		    }
+		});
+		
+		//同步更新缓存对应的值
+		obj.update({
+		    username: '123'
+		    , title: 'xxx'
+		});
+		// layer.open({
+		//     type: 2,
+		//     title: '编辑',
+		//     area:['50%','70%'],
+		//     content: 'update.html', //这里content是一个普通的String
+		//     btn: ['确定', '取消'],
+		//     // success: function (index, layero) {
+		//     //     form.render();
+		//     //     form.val("editDialogForm",data);
+		//     // },
+		//     yes: function (index, layero) {
+		
+		//     },
+		//     btn2: function (index, layero) {
+		//         return false //开启该代码可禁止点击该按钮关闭
+		//     }
+		// });
+		
+		
+		
+      // layer.prompt({
+      //   formType: 2
+      //   ,value: data.email
+      // }, function(value, index){
+      //   obj.update({
+      //     email: value
+      //   });
+      //   layer.close(index);
+      // });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
